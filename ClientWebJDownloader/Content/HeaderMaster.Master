@@ -18,6 +18,12 @@
     </asp:PlaceHolder>
     <webopt:BundleReference runat="server" Path="~/Content/css" />
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <script type="text/javascript">
+        function UpdateLabelText(labelID, text) {
+            var label = document.getElementById(labelID);
+            label.innerHTML = text;
+        }
+    </script>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -67,14 +73,12 @@
             <hr />
             <footer>
                 <p>
-                    Connécté en tant que&nbsp;
-                    <asp:Label ID="lblUserName" runat="server" ForeColor="Black"></asp:Label>
+                    Utilisateur&nbsp;<asp:Label ID="lblUserName" runat="server" ForeColor="Black"></asp:Label>
                 </p>
                 <p>
-                    Compte&nbsp;
-                    <asp:Label ID="lblUserType" runat="server"></asp:Label>
+                    Compte&nbsp;<asp:Label ID="lblUserType" runat="server"></asp:Label>
                 </p>
-                <p>&copy; <%: DateTime.Now.Year %> - JDownloader Web</p>
+                <p>&copy;<%: DateTime.Now.Year %> - JDownloader Web</p>
             </footer>
         </div>
     </form>

@@ -27,7 +27,7 @@ namespace ClientWebJDownloader
             routes.MapPageRoute("Logout", "Logout", "~/Content/Deconnection.aspx", true);
             routes.MapPageRoute("Subscribe", "Subscribe", "~/Content/Inscription.aspx", true);
             routes.MapPageRoute("LinkManager", "Links", "~/Content/Page_Link.aspx", true);
-            routes.MapPageRoute("AccountManager", "Account", "~/Content/Account.aspx", true);
+            routes.MapPageRoute("Profile", "Account", "~/Content/Page_Profil.aspx", true);
         }
     }
 }

@@ -152,6 +152,7 @@
     <Content Include="Content\Inscription.aspx" />
     <Content Include="Content\Login.aspx" />
     <Content Include="Content\Page_Link.aspx" />
+    <Content Include="Content\Page_Profil.aspx" />
     <Content Include="Content\Site.css" />
     <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />
@@ -248,6 +249,13 @@
     </Compile>
     <Compile Include="Content\Page_Link.aspx.designer.cs">
       <DependentUpon>Page_Link.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Content\Page_Profil.aspx.cs">
+      <DependentUpon>Page_Profil.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Content\Page_Profil.aspx.designer.cs">
+      <DependentUpon>Page_Profil.aspx</DependentUpon>
     </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>

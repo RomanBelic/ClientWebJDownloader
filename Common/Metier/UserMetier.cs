@@ -18,6 +18,7 @@ namespace Common.Metier
         private UserMetier(AbstractDAO<User> dao) : base(dao)
         {
             InsertGenerator += (Dictionary<string, object> sqlParams) => GenerateInsertUser(sqlParams);
+            UpdateGenerator += (Dictionary<string, object> sqlParams) => GenerateUpdateUser(sqlParams); 
         }
 
         private string GenerateInsertUser(Dictionary<string, object> sqlParams)
@@ -31,6 +32,17 @@ namespace Common.Metier
             vals = vals.TrimEnd(',');
             cols = vals.Replace("@", null);
             return String.Format("INSERT IGNORE INTO {0} ({1}) VALUES ({2})", Constants.BaseJDL.UserTable, cols, vals);
+        }
+
+        private string GenerateUpdateUser(Dictionary<string, object> sqlParams)
+        {
+            var vals = String.Empty;
+            foreach (var p in sqlParams)
+            {
+                vals += p.Key + "=@" + p.Key + ",";
+            }
+            vals = vals.TrimEnd(',');
+            return String.Format("UPDATE IGNORE {0} SET {1} WHERE Id=@Id", Constants.BaseJDL.UserTable, vals);
         }
 
         [DataObjectMethod(DataObjectMethodType.Select, true)]
@@ -62,7 +74,7 @@ namespace Common.Metier
         public static int InsertUser(Dictionary<string, object> sqlParams)
         {
             var query = instance.InsertGenerator(sqlParams);
-            return instance.Dao.InsertObject(sqlParams, query);
+            return (sqlParams.Count > 0) ? instance.Dao.InsertObject(sqlParams, query) : 0;
         }
 
 
@@ -71,6 +83,13 @@ namespace Common.Metier
         {
             var sqlParams = new Dictionary<string, object>(1) { { "Id", Id } };
             return instance.Dao.UpdateDeleteObject(sqlParams, Queries.Delete_User);
+        }
+
+        [DataObjectMethod(DataObjectMethodType.Delete, true)]
+        public static int UpdateUser(Dictionary<string, object> sqlParams)
+        {
+            var query = instance.UpdateGenerator(sqlParams);
+            return (sqlParams.Count > 0) ? instance.Dao.UpdateDeleteObject(sqlParams, query) : 0;
         }
     }
 }

@@ -13,23 +13,27 @@ namespace Common.Metier
     [DataObject(true)]
     public abstract class AbstractMetier<T> where T : DefaultEntity, new ()
     {
-        protected delegate string InsertInjector (Dictionary<string,object> sqlParams);
+        protected delegate string QueryInjector (Dictionary<string,object> sqlParams);
 
         private AbstractDAO<T> dao;
         protected AbstractDAO<T> Dao { get => dao; set => dao = value; }
         
-        private InsertInjector insertGenerator;
-        protected InsertInjector InsertGenerator { get => insertGenerator; set => insertGenerator = value; }
+        private QueryInjector insertGenerator;
+        protected QueryInjector InsertGenerator { get => insertGenerator; set => insertGenerator = value; }
+
+        private QueryInjector updateGenerator;
+        protected QueryInjector UpdateGenerator { get => updateGenerator; set => updateGenerator = value; }
 
         public AbstractMetier()
         {
             this.insertGenerator = (Dictionary<string, object> sqlParams) => String.Empty;
+            this.updateGenerator = (Dictionary<string, object> sqlParams) => String.Empty;
         }
 
-        protected AbstractMetier(AbstractDAO<T> daoInstance)
+        protected AbstractMetier(AbstractDAO<T> daoInstance) : this()
         {
             this.dao = daoInstance;
-            this.insertGenerator = (Dictionary<string,object> sqlParams) => String.Empty;
         }
+
     }
 }

@@ -10,14 +10,27 @@ namespace ClientWebJDownloader.Content
 {
     public partial class HeaderMaster : System.Web.UI.MasterPage
     {
+
+        public void Execute(EventHandler hander, object sender, EventArgs args)
+        {
+            hander(sender, args);
+        }
+
+        public Label LblLoggedUser
+        {
+            get { return lblUserName; }
+        }
+
+        public Label LblLoggedUserType
+        {
+            get { return lblUserType; }
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
-            {
-                var user = IdentificationService.GetCurrentUser();
-                lblUserName.Text = user.Nom + " " + user.Prenom;
-                lblUserType.Text = user.UserType.NameStr;
-            }
+            var user = IdentificationService.GetCurrentUser();
+            lblUserName.Text = String.Format("{0} {1}", user.Nom,user.Prenom);
+            lblUserType.Text = user.UserType.NameStr;
         }
 
         protected void lkHome_Click(object sender, EventArgs e)
@@ -32,7 +45,8 @@ namespace ClientWebJDownloader.Content
 
         protected void lkAccount_Click(object sender, EventArgs e)
         {
-            this.Response.RedirectToRoute("AccountManager");
+            this.Response.RedirectToRoute("Profile");
+            HttpContext.Current.Cache["prev_page" + Session.SessionID] = "Index";
         }
 
         protected void lkDeconnect_Click(object sender, EventArgs e)

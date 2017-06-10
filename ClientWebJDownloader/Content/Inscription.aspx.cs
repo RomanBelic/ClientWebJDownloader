@@ -75,8 +75,9 @@ namespace ClientWebJDownloader.Content
 
         protected void btnBack_Click(object sender, EventArgs e)
         {
+            var route = !String.IsNullOrEmpty(previous_Page) ? previous_Page : "Login";
             dispatcher.Context.Cache.Remove("prev_page" + Session.SessionID);
-            this.Response.RedirectToRoute(previous_Page);
+            this.Response.RedirectToRoute(route);
         }
     }
 }
