@@ -85,7 +85,7 @@ namespace Common.Metier
             return instance.Dao.UpdateDeleteObject(sqlParams, Queries.Delete_User);
         }
 
-        [DataObjectMethod(DataObjectMethodType.Delete, true)]
+        [DataObjectMethod(DataObjectMethodType.Update, true)]
         public static int UpdateUser(Dictionary<string, object> sqlParams)
         {
             var query = instance.UpdateGenerator(sqlParams);

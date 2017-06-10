@@ -69,6 +69,22 @@ namespace UnitTest
         }
 
         [TestMethod]
+        public void UpdateUserTest()
+        {
+            var user = UserMetier.GetUser("99");
+            var sqlParams = new Dictionary<string, object>()
+            {
+                {"IdType", testUser.IdType },
+                {"Nom", "Unit Test Nom Update" },
+                {"Prenom", "Unit Test Nom Update" },
+                {"DateRegister",  DateTime.Now  },
+                {"Id", user.Id }
+            };
+            var id = UserMetier.UpdateUser(sqlParams);
+            Assert.IsTrue(id == 1);
+        }
+
+        [TestMethod]
         public void DeleteUserTest()
         {
             var user = UserMetier.GetUser("99");
