@@ -288,6 +288,10 @@
       <Project>{66c59245-42c7-4dee-8f92-1d92e26388c7}</Project>
       <Name>Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\UnitTest\UnitTest.csproj">
+      <Project>{d72d312f-ccf5-410f-ab66-8ea3e5fe01fe}</Project>
+      <Name>UnitTest</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
