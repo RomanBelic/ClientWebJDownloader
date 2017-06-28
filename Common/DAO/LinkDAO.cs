@@ -23,6 +23,7 @@ namespace Common.DAO
                 IdUser = r["IdUser"] != DBNull.Value ? Convert.ToInt32(r["IdUser"]) : 0,
                 Url = r["Url"] != DBNull.Value ? r["Url"].ToString() : String.Empty,
                 DateCreated = r["DateCreated"] != DBNull.Value ? Convert.ToDateTime(r["DateCreated"]) : DateTime.MinValue,
+                Name = r["Name"] != DBNull.Value ? r["Name"].ToString() : String.Empty,
             };
         }
     }

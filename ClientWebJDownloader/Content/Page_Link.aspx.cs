@@ -16,6 +16,7 @@ namespace ClientWebJDownloader.Content
         protected void Page_Load(object sender, EventArgs e)
         {
             dispatcher.Dispatch();
+            ucAddLink.OnQuit += (obj, arg) => { gvLinks.DataBind(); btnAddLink.Visible = true; };
         }
 
         protected void odsGvLinks_Selecting(object sender, ObjectDataSourceSelectingEventArgs e)
@@ -25,18 +26,8 @@ namespace ClientWebJDownloader.Content
 
         protected void btnAddLink_Click(object sender, EventArgs e)
         {
-            var sqlParams = new Dictionary<string, object>()
-            {
-                {"Url", tbUrl.Text},
-                {"IdUser", dispatcher.IdentificationService.GetLoggedUser().Id },
-                {"DateCreated", DateTime.Now },
-            };
-            int rows = 0;
-            if ((rows = LinkMetier.InsertOrUpdateLink(sqlParams)) > 0)
-            {
-                gvLinks.DataBind();
-                tbUrl.Text = String.Empty;
-            }
+            ucAddLink.LinkPanel.Visible = true;
+            btnAddLink.Visible = false;
         }
 
         protected void btnDelete_Click(object sender, EventArgs e)

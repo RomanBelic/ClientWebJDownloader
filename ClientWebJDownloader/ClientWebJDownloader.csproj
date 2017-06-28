@@ -154,6 +154,7 @@
     <Content Include="Content\Page_Link.aspx" />
     <Content Include="Content\Page_Profil.aspx" />
     <Content Include="Content\Site.css" />
+    <Content Include="Content\UC_AddLink.ascx" />
     <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -256,6 +257,13 @@
     </Compile>
     <Compile Include="Content\Page_Profil.aspx.designer.cs">
       <DependentUpon>Page_Profil.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Content\UC_AddLink.ascx.cs">
+      <DependentUpon>UC_AddLink.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Content\UC_AddLink.ascx.designer.cs">
+      <DependentUpon>UC_AddLink.ascx</DependentUpon>
     </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>

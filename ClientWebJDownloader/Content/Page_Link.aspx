@@ -1,6 +1,7 @@
 ﻿<%@ Page Language="C#" Title="Gestion des Liens" AutoEventWireup="true" CodeBehind="Page_Link.aspx.cs" Inherits="ClientWebJDownloader.Content.Page_Link"
     MasterPageFile="~/Content/HeaderMaster.Master" %>
 
+<%@ Register TagPrefix="uc" Src="~/Content/UC_AddLink.ascx" TagName="addLink" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <asp:UpdatePanel ID="updPanel" runat="server" ChildrenAsTriggers="true">
@@ -9,13 +10,14 @@
                 <br />
                 <table>
                     <tr>
-                           <td style="padding-bottom:25px">Url de téléchargement : 
-                             <asp:TextBox ID="tbUrl" runat="server" ValidationGroup="grpAdd"></asp:TextBox>
+                        <td style="padding-bottom: 25px">
+                            <asp:Button ID="btnAddLink" runat="server" OnClick="btnAddLink_Click" Text="Ajouter un lien" ValidationGroup="grpAdd" CausesValidation="true" />
                         </td>
-                        <td style="padding-bottom:25px">
-                            <asp:Button ID="btnAddLink" runat="server" OnClick="btnAddLink_Click" Text="Ajouter" ValidationGroup="grpAdd" CausesValidation="true" />
-                            <asp:RequiredFieldValidator runat="server" ID="reqName" ControlToValidate="tbUrl" ErrorMessage="Entrez l'URL du lien" Display="Dynamic"
-                                ForeColor="Red" ValidationGroup="grpAdd" />
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                           <uc:addLink runat="server" id="ucAddLink"></uc:addLink> 
+                           <br />
                         </td>
                     </tr>
                     <tr>
@@ -30,7 +32,14 @@
                                             </div>
                                         </ItemTemplate>
                                     </asp:TemplateField>
-                                    <asp:BoundField DataField="Url" HeaderText="Url" SortExpression="DateCreated" ReadOnly="True" ItemStyle-Width="200px" />
+                                    <asp:BoundField DataField="Name" HeaderText="Nom" SortExpression="DateCreated" ReadOnly="True" />
+                                    <asp:TemplateField>
+                                        <ItemTemplate>
+                                            <div style="text-align:center">
+                                                <asp:LinkButton id="urlLink" runat="server" Text='<% #Eval("Url") %>' PostBackUrl='<%# Eval("Url") %>'></asp:LinkButton>
+                                            </div>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
                                     <asp:BoundField DataField="DateCreatedStr" HeaderText="Date" ReadOnly="True" SortExpression="DateCreatedStr" />
                                     <asp:TemplateField>
                                         <ItemTemplate>

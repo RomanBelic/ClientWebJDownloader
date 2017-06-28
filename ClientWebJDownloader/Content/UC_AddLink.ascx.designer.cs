@@ -10,51 +10,60 @@
 namespace ClientWebJDownloader.Content {
     
     
-    public partial class Page_Link {
+    public partial class UC_AddLink {
         
         /// <summary>
-        /// updPanel control.
+        /// pnlNewLink control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel updPanel;
+        protected global::System.Web.UI.WebControls.Panel pnlNewLink;
         
         /// <summary>
-        /// btnAddLink control.
+        /// tbURL control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnAddLink;
+        protected global::System.Web.UI.WebControls.TextBox tbURL;
         
         /// <summary>
-        /// ucAddLink control.
+        /// reqName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::ClientWebJDownloader.Content.UC_AddLink ucAddLink;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator reqName;
         
         /// <summary>
-        /// gvLinks control.
+        /// tbName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvLinks;
+        protected global::System.Web.UI.WebControls.TextBox tbName;
         
         /// <summary>
-        /// odsGvLinks control.
+        /// btnValider control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ObjectDataSource odsGvLinks;
+        protected global::System.Web.UI.WebControls.Button btnValider;
+        
+        /// <summary>
+        /// btnClose control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnClose;
     }
 }

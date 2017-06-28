@@ -22,6 +22,9 @@ namespace Common.Entities
         private DateTime dateCreated;
         public DateTime DateCreated { get => dateCreated; set => dateCreated = value; }
 
+        private string name;
+        public string Name { get => name; set => name = value; }
+
         public string DateCreatedStr
         {
             get => (dateCreated > DateTime.MinValue) ? dateCreated.ToString("dd/MM/yyyy") : String.Empty;

@@ -17,7 +17,20 @@ namespace Common.Metier
 
         private LinkMetier(AbstractDAO<Link> daoInstance) : base(daoInstance)
         {
+            InsertGenerator = (Dictionary<string, object> sqlParams) => GenerateInsertLink(sqlParams);
+        }
 
+        private string GenerateInsertLink(Dictionary<string, object> sqlParams)
+        {
+            var cols = String.Empty;
+            var vals = String.Empty;
+            foreach (var p in sqlParams)
+            {
+                vals += "@" + p.Key + ",";
+            }
+            vals = vals.TrimEnd(',');
+            cols = vals.Replace("@", null);
+            return String.Format("INSERT IGNORE INTO {0} ({1}) VALUES ({2})", Constants.BaseJDL.LinkTable, cols, vals);
         }
 
         [DataObjectMethod(DataObjectMethodType.Select, true)]
@@ -38,6 +51,13 @@ namespace Common.Metier
         public static int InsertOrUpdateLink(Dictionary<string, object> sqlParams)
         {
             return instance.Dao.InsertOrUpdateObject(sqlParams, "Id", Constants.BaseJDL.LinkTable.Name, "Url=@Url AND IdUser=@IdUser");
+        }
+
+        [DataObjectMethod(DataObjectMethodType.Insert, true)]
+        public static int InsertLink(Dictionary<string, object> sqlParams)
+        {
+            var query = instance.InsertGenerator(sqlParams);
+            return instance.Dao.InsertObject(sqlParams, query);
         }
 
         [DataObjectMethod(DataObjectMethodType.Update, true)]
