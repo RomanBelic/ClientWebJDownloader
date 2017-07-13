@@ -33,14 +33,14 @@
                                         </ItemTemplate>
                                     </asp:TemplateField>
                                     <asp:BoundField DataField="Name" HeaderText="Nom" SortExpression="DateCreated" ReadOnly="True" />
-                                    <asp:TemplateField>
+                                    <asp:TemplateField HeaderText="Url">
                                         <ItemTemplate>
                                             <div style="text-align:center">
                                                 <asp:LinkButton id="urlLink" runat="server" Text='<% #Eval("Url") %>' PostBackUrl='<%# Eval("Url") %>'></asp:LinkButton>
                                             </div>
                                         </ItemTemplate>
                                     </asp:TemplateField>
-                                    <asp:BoundField DataField="DateCreatedStr" HeaderText="Date" ReadOnly="True" SortExpression="DateCreatedStr" />
+                                    <asp:BoundField DataField="DateCreatedStr" HeaderText="Date d'Ajout" ReadOnly="True" SortExpression="DateCreatedStr" />
                                     <asp:TemplateField>
                                         <ItemTemplate>
                                             <asp:Button ID="btnDelete" OnClick="btnDelete_Click" Text="Supprimer" runat="server" />
